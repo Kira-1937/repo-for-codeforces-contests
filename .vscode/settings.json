@@ -1,6 +1,11 @@
 {
   "C_Cpp.errorSquiggles": "Disabled",
   "files.associations": {
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "ostream": "cpp",
+    "cmath": "cpp",
+    "random": "cpp",
+    "cstdlib": "cpp",
+    "vector": "cpp"
   }
 }
