@@ -189,23 +189,17 @@ void solve(int it)
         v.pb(x);
     }
 
-   for(int i=0;i<=n/2;i++){
-   if(v[i]<v[n-1-i]) {swap(v[i],v[n-1-i]);}
-   }
+  int ans=0;
+ int i=0,j=n-1;
+ while(i<j){
+    ans=__gcd(ans,abs(v[i]-v[j]));
+    i++;
+    j--;
+ }
+  cout<<ans<<endl;
+  return ;
 
-
-
-   int ln=-1;
-   for(int i=0;i<=n/2;i++){
-    if(i!=n-1-i){
-        if(v[i]!=v[n-1-i]){
-      if(v[i])
-        }
-    }
-   }
-
-
-
+	
 }
 signed main()
 {

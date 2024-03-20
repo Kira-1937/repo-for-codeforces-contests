@@ -178,26 +178,86 @@ ll fact(ll n)
     return res;
 }
 
+class disjoint {
+vector<int>parent,size,rank;
+public:
+disjoint(int n){
+    parent.resize(n);
+    size.resize(n,1);
+    rank.resize(n,0);
+    for(int i=0;i<n;i++){
+        parent[i]=i;
+    }
+}
+    int findparent(int n){
+        if(parent[n]==n){
+         return n;
+        }
+        return parent[n]=findparent(parent[n]);
+    }
+    void unionbyrank(int i,int j){
+        int u=findparent(i);
+        int v=findparent(j);
+        if(u==v)return;
+        else if(rank[u]>rank[v]){
+            parent[v]=u;
+        }
+        else if(rank[v]>rank[u]){
+            parent[u]=v;
+        }
+        else {
+            parent[u]=v;
+            rank[v]++;
+        }
+    }
+    void unionbysize(int i,int j){
+        int u=findparent(i);
+        int v=findparent(j);
+        if(u==v)return ;
+        else if(size[u]>size[v]){
+            size[u]+=size[v];
+            parent[v]=u;
+        }
+        else {
+            size[v]+=size[u];
+            parent[u]=v;
+        }}
+
+};
+
 void solve(int it)
 {ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);cout<<setprecision(25);
 	int n ;
     cin>>n;
-    map<int,int>mp;
+    vector<int>v(n,0);
     for(int i=0;i<n;i++){
-        int x;
-        cin>>x;
-        mp[i+1]=x;
-        
+        cin>>v[i];
+        v[i]--;
+  }
+  disjoint ds(n);
+  for(int i=0;i<n;i++){
+    ds.unionbysize(i,v[i]);
+  }
+  int compo=0;
+  for(int i=0;i<n;i++){
+    if(ds.findparent(i)==i){
+        compo++;
     }
+  }
 
-set<int>us;
+  int num=0;
+  for(int i=0;i<n;i++){
 
-int nos=0;
-while(nos!=n){
-
+    if(i==v[v[i]]){
+        num++;
+    }
+  }
+trace(num,compo);
+if(num==0){
+    cout<<compo<<" "<<compo<<endl;
+    return ;
 }
-
-
+  cout<<compo-(num/2)+1<<" "<<compo<<endl;
 
 
 

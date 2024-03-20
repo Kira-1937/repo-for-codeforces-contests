@@ -6,6 +6,14 @@
     "cmath": "cpp",
     "random": "cpp",
     "cstdlib": "cpp",
-    "vector": "cpp"
-  }
+    "vector": "cpp",
+    "*.tcc": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "tuple": "cpp"
+  },
+  "cph.general.onceMaintainerMessage": false
 }
